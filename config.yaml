@@ -1,0 +1,32 @@
+# 数据库配置
+mysql:
+  host: "rm-uf61y74x31me7m728.mysql.rds.aliyuncs.com"
+  user: "dmc_sit_rw"
+  password: "J2I@jn9lye!h01OA"
+  database: "dmc_sit"
+  charset: "utf8mb4"
+
+# Kafka推送配置
+kafka:
+  push_url: "http://dmc-sit.immotors.com/dmc-voc/external/sync-voc-media-out/XZ"
+  push_timeout: 10
+  push_retry: 2
+
+# 数据路径配置
+data:
+  prod_data_path: "data/prod_data.xlsx"
+  # 新增配置：用于直接包含y_true和y_pred的Excel文件路径
+  direct_evaluation_path: "data/voc线上数据.xlsx"
+
+# 日志配置
+logger:
+  level: "INFO"
+  log_file: "logs/app.log"
+
+# 评估配置
+evaluation:
+  labels: ["negative", "positive", "neutral"]
+  confusion_matrix_dir: "results/confusion_matrix"
+  interactive: false  # 非交互环境（服务器）设为false，本地调试设为true
+  # 新增配置：选择数据处理模式
+  data_processing_mode: "direct"  # 可选值："direct" 或 "sql_query"
